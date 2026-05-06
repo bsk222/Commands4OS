@@ -1,4 +1,4 @@
-# ⚡ Commands4OS — Terminal Cheat Sheet
+# ⚡ Commands4OS — v1.0 (v1.1 aux 3 stars)
 
 > Référence rapide des commandes essentielles pour **Windows** (CMD / PowerShell), **Linux** (Bash) et **macOS** (Zsh/Bash)
 
