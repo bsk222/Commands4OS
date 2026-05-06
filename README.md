@@ -1,6 +1,29 @@
-# ⚡ Commands4OS — Cheat Sheet
+# ⚡ Commands4OS — Terminal Cheat Sheet
 
-> Commandes essentielles pour **Windows** (CMD / PowerShell), **Linux** (Bash) et **macOS** (Zsh/Bash)
+> Référence rapide des commandes essentielles pour **Windows** (CMD / PowerShell), **Linux** (Bash) et **macOS** (Zsh/Bash)
+
+![Windows](https://img.shields.io/badge/Windows-CMD%20%7C%20PowerShell-0078D6?logo=windows&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-Bash-FCC624?logo=linux&logoColor=black)
+![macOS](https://img.shields.io/badge/macOS-Zsh%2FBash-000000?logo=apple&logoColor=white)
+
+---
+
+## 📋 Table des matières
+
+- [📁 Navigation & Fichiers](#-navigation--fichiers)
+- [🖥️ Système & Informations](#️-système--informations)
+- [🌐 Réseau](#-réseau)
+- [👤 Utilisateurs & Permissions](#-utilisateurs--permissions)
+- [📦 Gestion de Paquets](#-gestion-de-paquets)
+- [⚙️ Services & Démarrage](#️-services--démarrage)
+- [💾 Disques & Partitions](#-disques--partitions)
+- [🔐 Sécurité & Chiffrement](#-sécurité--chiffrement)
+- [🔄 Processus & Tâches Planifiées](#-processus--tâches-planifiées)
+- [📝 Texte & Redirections](#-texte--redirections)
+- [🔧 Divers & Utilitaires](#-divers--utilitaires)
+- [🐧 Linux/macOS — Exclusif](#-linuxmacos--exclusif)
+- [💻 Windows — Exclusif](#-windows--exclusif)
+- [🍎 macOS — Exclusif](#-macos--exclusif)
 
 ---
 
@@ -16,12 +39,11 @@
 | Supprimer fichier | `del fichier` | `rm fichier` | `rm fichier` | `rm fichier` |
 | Supprimer dossier | `rmdir /s nom` | `rm -r nom` | `rm -r nom` | `rm -r nom` |
 | Copier fichier | `copy src dest` | `cp src dest` | `cp src dest` | `cp src dest` |
-| Déplacer/Renommer | `move src dest` | `mv src dest` | `mv src dest` | `mv src dest` |
-| Afficher contenu fichier | `type fichier` | `cat fichier` | `cat fichier` | `cat fichier` |
+| Déplacer / Renommer | `move src dest` | `mv src dest` | `mv src dest` | `mv src dest` |
+| Afficher contenu | `type fichier` | `cat fichier` | `cat fichier` | `cat fichier` |
 | Créer fichier vide | `echo. > fichier` | `New-Item fichier` | `touch fichier` | `touch fichier` |
 | Chercher fichier | `where fichier` | `Get-ChildItem -r fichier` | `find / -name fichier` | `find / -name fichier` |
 | Chercher dans fichier | `findstr "texte" fichier` | `Select-String "texte"` | `grep "texte" fichier` | `grep "texte" fichier` |
-| Taille dossier | — | `du -sh` | `du -sh dossier` | `du -sh dossier` |
 | Lien symbolique | `mklink lien cible` | `New-Item -ItemType SymbolicLink` | `ln -s cible lien` | `ln -s cible lien` |
 
 ---
@@ -37,15 +59,15 @@
 | Processus actifs | `tasklist` | `Get-Process` | `ps aux` | `ps aux` |
 | Tuer un processus | `taskkill /PID 1234` | `Stop-Process -Id 1234` | `kill -9 1234` | `kill -9 1234` |
 | Tuer par nom | `taskkill /IM nom.exe` | `Stop-Process -Name nom` | `pkill nom` | `pkill nom` |
-| Uptime | `systeminfo \| find "Boot"` | `(Get-Date) - (gcim Win32_OS).LastBootUpTime` | `uptime` | `uptime` |
-| Nom de la machine | `hostname` | `hostname` | `hostname` | `hostname` |
+| Uptime | `systeminfo \| find "Boot"` | `(Get-Date)-(gcim Win32_OS).LastBootUpTime` | `uptime` | `uptime` |
+| Nom machine | `hostname` | `hostname` | `hostname` | `hostname` |
 | Utilisateur courant | `whoami` | `whoami` | `whoami` | `whoami` |
 | Variables d'env | `set` | `Get-ChildItem Env:` | `env` | `env` |
 | Var d'env spécifique | `echo %VAR%` | `$env:VAR` | `echo $VAR` | `echo $VAR` |
 | Définir var d'env | `set VAR=val` | `$env:VAR="val"` | `export VAR=val` | `export VAR=val` |
-| Historique commandes | `doskey /history` | `Get-History` | `history` | `history` |
-| Infos matériel détaillées | `msinfo32` | `Get-ComputerInfo` | `lshw` | `system_profiler` |
-| Moniteur ressources | `resmon` | — | `htop` / `top` | `top` / Activity Monitor |
+| Historique | `doskey /history` | `Get-History` | `history` | `history` |
+| Infos matériel | `msinfo32` | `Get-ComputerInfo` | `lshw` | `system_profiler` |
+| Moniteur ressources | `resmon` | — | `htop` / `top` | `top` |
 
 ---
 
@@ -53,15 +75,15 @@
 
 | Action | Windows CMD | PowerShell | Linux | macOS |
 |---|---|---|---|---|
-| Adresse IP | `ipconfig` | `Get-NetIPAddress` | `ip a` / `ifconfig` | `ifconfig` / `ipconfig getifaddr en0` |
+| Adresse IP | `ipconfig` | `Get-NetIPAddress` | `ip a` / `ifconfig` | `ifconfig` |
 | Ping | `ping hôte` | `ping hôte` | `ping -c 4 hôte` | `ping -c 4 hôte` |
 | Traceroute | `tracert hôte` | `tracert hôte` | `traceroute hôte` | `traceroute hôte` |
-| DNS lookup | `nslookup domaine` | `Resolve-DnsName domaine` | `nslookup domaine` / `dig domaine` | `nslookup domaine` / `dig domaine` |
-| Connexions actives | `netstat -an` | `Get-NetTCPConnection` | `ss -tuln` / `netstat -an` | `netstat -an` |
+| DNS lookup | `nslookup domaine` | `Resolve-DnsName domaine` | `dig domaine` | `dig domaine` |
+| Connexions actives | `netstat -an` | `Get-NetTCPConnection` | `ss -tuln` | `netstat -an` |
 | Ports ouverts | `netstat -ano` | `Get-NetTCPConnection` | `ss -tlnp` | `lsof -i -P -n` |
 | Table ARP | `arp -a` | `Get-NetNeighbor` | `arp -a` | `arp -a` |
 | Route par défaut | `route print` | `Get-NetRoute` | `ip route` | `netstat -rn` |
-| Télécharger fichier | — | `Invoke-WebRequest -Uri url -OutFile f` | `wget url` / `curl -O url` | `curl -O url` / `wget url` |
+| Télécharger fichier | — | `Invoke-WebRequest -Uri url -OutFile f` | `wget url` | `curl -O url` |
 | Requête HTTP | — | `Invoke-RestMethod url` | `curl url` | `curl url` |
 | Flush DNS | `ipconfig /flushdns` | `Clear-DnsClientCache` | `systemd-resolve --flush-caches` | `dscacheutil -flushcache` |
 | Firewall statut | — | `Get-NetFirewallProfile` | `ufw status` | `pfctl -s info` |
@@ -88,33 +110,29 @@
 ## 📦 Gestion de Paquets
 
 ### Windows — Winget
-```powershell
+```bash
 winget search nom          # Chercher
 winget install nom         # Installer
 winget uninstall nom       # Désinstaller
-winget upgrade             # Lister mises à jour
 winget upgrade --all       # Tout mettre à jour
 winget list                # Paquets installés
 ```
 
 ### Windows — Chocolatey
-```powershell
+```bash
 choco install nom          # Installer
 choco uninstall nom        # Désinstaller
 choco upgrade all          # Tout mettre à jour
 choco list --local-only    # Paquets installés
-choco search nom           # Chercher
 ```
 
 ### Linux — APT (Debian/Ubuntu)
 ```bash
-apt update                 # Mettre à jour les sources
-apt upgrade                # Mettre à jour les paquets
+apt update && apt upgrade  # Mettre à jour
 apt install nom            # Installer
 apt remove nom             # Désinstaller
 apt purge nom              # Désinstaller + configs
 apt autoremove             # Nettoyer inutilisés
-apt list --installed       # Paquets installés
 apt search nom             # Chercher
 ```
 
@@ -124,14 +142,12 @@ dnf update                 # Mettre à jour
 dnf install nom            # Installer
 dnf remove nom             # Désinstaller
 dnf search nom             # Chercher
-dnf list installed         # Paquets installés
 ```
 
 ### Linux — Pacman (Arch)
 ```bash
-pacman -Syu                # Mettre à jour tout
+pacman -Syu                # Tout mettre à jour
 pacman -S nom              # Installer
-pacman -R nom              # Désinstaller
 pacman -Rs nom             # Désinstaller + dépendances
 pacman -Ss nom             # Chercher
 pacman -Q                  # Paquets installés
@@ -139,14 +155,14 @@ pacman -Q                  # Paquets installés
 
 ### macOS — Homebrew
 ```bash
-brew update                # Mettre à jour Homebrew
-brew upgrade               # Mettre à jour les paquets
-brew install nom           # Installer
-brew uninstall nom         # Désinstaller
-brew search nom            # Chercher
-brew list                  # Paquets installés
-brew cleanup               # Nettoyer
-brew doctor                # Diagnostiquer
+brew update && brew upgrade  # Mettre à jour
+brew install nom             # Installer
+brew uninstall nom           # Désinstaller
+brew search nom              # Chercher
+brew list                    # Paquets installés
+brew cleanup                 # Nettoyer
+brew doctor                  # Diagnostiquer
+brew install --cask nom-app  # Installer app GUI
 ```
 
 ---
@@ -159,10 +175,10 @@ brew doctor                # Diagnostiquer
 | Statut service | `sc query nom` | `Get-Service nom` | `systemctl status nom` | `launchctl list \| grep nom` |
 | Démarrer service | `net start nom` | `Start-Service nom` | `systemctl start nom` | `launchctl start nom` |
 | Arrêter service | `net stop nom` | `Stop-Service nom` | `systemctl stop nom` | `launchctl stop nom` |
-| Redémarrer service | — | `Restart-Service nom` | `systemctl restart nom` | `launchctl kickstart -k nom` |
-| Activer au démarrage | `sc config nom start=auto` | `Set-Service nom -StartupType Automatic` | `systemctl enable nom` | `launchctl enable nom` |
-| Désactiver au démarrage | `sc config nom start=disabled` | `Set-Service nom -StartupType Disabled` | `systemctl disable nom` | `launchctl disable nom` |
-| Logs service | `eventvwr` | `Get-EventLog` | `journalctl -u nom` | `log show --predicate 'processImagePath contains "nom"'` |
+| Redémarrer | — | `Restart-Service nom` | `systemctl restart nom` | `launchctl kickstart -k nom` |
+| Activer au boot | `sc config nom start=auto` | `Set-Service nom -StartupType Automatic` | `systemctl enable nom` | `launchctl enable nom` |
+| Désactiver au boot | `sc config nom start=disabled` | `Set-Service nom -StartupType Disabled` | `systemctl disable nom` | `launchctl disable nom` |
+| Logs service | `eventvwr` | `Get-EventLog` | `journalctl -u nom` | `log show --predicate '...'` |
 
 ---
 
@@ -174,7 +190,7 @@ brew doctor                # Diagnostiquer
 | Lister partitions | `diskpart` → `list partition` | `Get-Partition` | `fdisk -l` | `diskutil list` |
 | Monter partition | — | `Mount-DiskImage` | `mount /dev/sdb1 /mnt` | `diskutil mount /dev/disk2s1` |
 | Démonter partition | — | `Dismount-DiskImage` | `umount /mnt` | `diskutil unmount /dev/disk2s1` |
-| Formater partition | `format X: /fs:NTFS` | `Format-Volume -DriveLetter X` | `mkfs.ext4 /dev/sdb1` | `diskutil eraseDisk APFS nom /dev/disk2` |
+| Formater | `format X: /fs:NTFS` | `Format-Volume -DriveLetter X` | `mkfs.ext4 /dev/sdb1` | `diskutil eraseDisk APFS nom /dev/disk2` |
 | Vérifier disque | `chkdsk C:` | `Repair-Volume C` | `fsck /dev/sdb1` | `diskutil verifyDisk /dev/disk2` |
 | Réparer disque | `chkdsk C: /f` | `Repair-Volume C -Scan` | `fsck -y /dev/sdb1` | `diskutil repairDisk /dev/disk2` |
 
@@ -187,11 +203,10 @@ brew doctor                # Diagnostiquer
 | Générer clé SSH | `ssh-keygen -t ed25519` | `ssh-keygen -t ed25519` | `ssh-keygen -t ed25519` |
 | Se connecter SSH | `ssh user@hôte` | `ssh user@hôte` | `ssh user@hôte` |
 | Copier clé SSH | — | `ssh-copy-id user@hôte` | `ssh-copy-id user@hôte` |
-| Hash MD5 | `certutil -hashfile fichier MD5` | `md5sum fichier` | `md5 fichier` |
-| Hash SHA256 | `certutil -hashfile fichier SHA256` | `sha256sum fichier` | `shasum -a 256 fichier` |
+| Hash MD5 | `certutil -hashfile f MD5` | `md5sum fichier` | `md5 fichier` |
+| Hash SHA256 | `certutil -hashfile f SHA256` | `sha256sum fichier` | `shasum -a 256 fichier` |
 | Chiffrer fichier | `cipher /e fichier` | `gpg -c fichier` | `openssl enc -aes-256-cbc -in f -out f.enc` |
 | Lister certificats | `certmgr` | `openssl s_client -connect host:443` | `security find-certificate -a` |
-| Pare-feu — bloquer port | `netsh advfirewall firewall add rule ...` | `ufw deny port` | `pfctl` |
 
 ---
 
@@ -199,12 +214,12 @@ brew doctor                # Diagnostiquer
 
 | Action | Windows CMD | PowerShell | Linux | macOS |
 |---|---|---|---|---|
-| Lister tâches planifiées | `schtasks /query` | `Get-ScheduledTask` | `crontab -l` | `crontab -l` |
-| Créer tâche planifiée | `schtasks /create ...` | `Register-ScheduledTask` | `crontab -e` | `crontab -e` |
+| Lister tâches | `schtasks /query` | `Get-ScheduledTask` | `crontab -l` | `crontab -l` |
+| Créer tâche | `schtasks /create ...` | `Register-ScheduledTask` | `crontab -e` | `crontab -e` |
 | Supprimer tâche | `schtasks /delete /tn nom` | `Unregister-ScheduledTask` | `crontab -r` | `crontab -r` |
-| Processus en arrière-plan | `start /b commande` | `Start-Job { commande }` | `commande &` | `commande &` |
+| Arrière-plan | `start /b commande` | `Start-Job { commande }` | `commande &` | `commande &` |
 | Jobs en cours | — | `Get-Job` | `jobs` | `jobs` |
-| Priorité processus | `wmic process ... priority` | `Set-Process -Priority` | `nice -n val cmd` / `renice` | `renice -n val -p PID` |
+| Priorité processus | `wmic process ... priority` | `Set-Process -Priority` | `nice -n val cmd` | `renice -n val -p PID` |
 
 ---
 
@@ -212,14 +227,14 @@ brew doctor                # Diagnostiquer
 
 | Action | Windows CMD | PowerShell | Linux/macOS |
 |---|---|---|---|
-| Rediriger sortie vers fichier | `cmd > fichier` | `cmd > fichier` | `cmd > fichier` |
+| Sortie vers fichier | `cmd > fichier` | `cmd > fichier` | `cmd > fichier` |
 | Ajouter à fichier | `cmd >> fichier` | `cmd >> fichier` | `cmd >> fichier` |
 | Rediriger erreurs | `cmd 2> erreurs` | `cmd 2> erreurs` | `cmd 2> erreurs` |
 | Pipe | `cmd1 \| cmd2` | `cmd1 \| cmd2` | `cmd1 \| cmd2` |
-| Compter lignes | `find /c /v "" fichier` | `(Get-Content fichier).Count` | `wc -l fichier` |
+| Compter lignes | `find /c /v "" fichier` | `(Get-Content f).Count` | `wc -l fichier` |
 | Trier | `sort fichier` | `Sort-Object` | `sort fichier` |
 | Dédoublonner | — | `Select-Object -Unique` | `sort -u fichier` / `uniq` |
-| Chercher et remplacer | — | `(Get-Content f) -replace "a","b"` | `sed -i 's/a/b/g' fichier` |
+| Chercher/Remplacer | — | `(Get-Content f) -replace "a","b"` | `sed -i 's/a/b/g' fichier` |
 | Afficher début | — | `Get-Content -Head 10` | `head -n 10 fichier` |
 | Afficher fin | — | `Get-Content -Tail 10` | `tail -n 10 fichier` |
 | Suivi temps réel | — | `Get-Content -Wait` | `tail -f fichier` |
@@ -233,59 +248,55 @@ brew doctor                # Diagnostiquer
 | Redémarrer | `shutdown /r /t 0` | `reboot` | `sudo reboot` |
 | Éteindre | `shutdown /s /t 0` | `poweroff` | `sudo shutdown -h now` |
 | Verrouiller session | `rundll32 user32.dll,LockWorkStation` | `loginctl lock-session` | `pmset displaysleepnow` |
-| Calendrier | `cal` (si installé) | `cal` | `cal` |
-| Heure système | `time` | `Get-Date` | `date` |
-| Date système | `date` | `Get-Date` | `date` |
-| Calculatrice CLI | — | — | `bc` |
-| Compression ZIP | `compact` / `Compress-Archive` | `Compress-Archive src dest.zip` | `zip -r dest.zip src` |
-| Extraction ZIP | `expand` | `Expand-Archive dest.zip` | `unzip fichier.zip` |
+| Heure / Date | `time` / `date` | `Get-Date` | `date` |
+| Compression ZIP | `Compress-Archive src dest.zip` | `Compress-Archive src dest.zip` | `zip -r dest.zip src` |
+| Extraction ZIP | `Expand-Archive dest.zip` | `Expand-Archive dest.zip` | `unzip fichier.zip` |
 | Compression TAR | — | `tar -czf archive.tar.gz src` | `tar -czf archive.tar.gz src` |
 | Extraction TAR | — | `tar -xzf archive.tar.gz` | `tar -xzf archive.tar.gz` |
 | Effacer l'écran | `cls` | `Clear-Host` / `cls` | `clear` |
 | Aide commande | `commande /?` | `Get-Help commande` | `man commande` |
 | Chemin d'un binaire | `where commande` | `Get-Command commande` | `which commande` |
 | Alias | `doskey alias=cmd` | `Set-Alias alias cmd` | `alias alias='cmd'` |
-| Variables système | `systeminfo` | `Get-ComputerInfo` | `system_profiler SPSoftwareDataType` |
 
 ---
 
-## 🐧 Commandes Linux/macOS exclusives
+## 🐧 Linux/macOS — Exclusif
 
 ```bash
-# Permissions avancées
-chmod u+x fichier          # Rendre exécutable
-chmod 644 fichier          # rw-r--r--
-chmod 755 dossier          # rwxr-xr-x
-chown -R user:groupe doss  # Récursif
+# Permissions
+chmod u+x fichier              # Rendre exécutable
+chmod 644 fichier              # rw-r--r--
+chmod 755 dossier              # rwxr-xr-x
+chown -R user:groupe dossier   # Récursif
 
 # Recherche avancée
-find . -name "*.log" -mtime -7    # Fichiers .log < 7 jours
-find . -size +100M                 # Fichiers > 100 Mo
-grep -r "texte" /chemin            # Recherche récursive
+find . -name "*.log" -mtime -7 # Fichiers .log modifiés < 7 jours
+find . -size +100M             # Fichiers > 100 Mo
+grep -r "texte" /chemin        # Recherche récursive
 
 # Monitoring
-watch -n 2 commande        # Répéter toutes les 2s
-strace commande            # Tracer appels système (Linux)
-lsof -p PID                # Fichiers ouverts par un PID
-vmstat 1                   # Stats VM chaque seconde
-iostat                     # Stats I/O disque
+watch -n 2 commande            # Répéter toutes les 2s
+lsof -p PID                    # Fichiers ouverts par un PID
+vmstat 1                       # Stats VM chaque seconde
+iostat                         # Stats I/O disque
+strace commande                # Tracer appels système (Linux)
 
 # Réseau avancé
-nmap -sV hôte              # Scanner ports + versions
-tcpdump -i eth0            # Capturer trafic réseau
-nc -zv hôte port           # Tester connectivité port
-ssh -L 8080:localhost:80 user@hôte   # Tunnel SSH local
-rsync -avz src/ user@hôte:dest/      # Synchronisation
+nmap -sV hôte                  # Scanner ports + versions
+tcpdump -i eth0                # Capturer trafic réseau
+nc -zv hôte port               # Tester connectivité port
+ssh -L 8080:localhost:80 user@hôte    # Tunnel SSH local
+rsync -avz src/ user@hôte:dest/       # Synchronisation
 
-# Environnement
-source ~/.bashrc           # Recharger config shell
-echo $PATH                 # Afficher le PATH
-export PATH="$PATH:/nouveau/chemin"  # Ajouter au PATH
+# Shell
+source ~/.bashrc               # Recharger config shell
+echo $PATH                     # Afficher le PATH
+export PATH="$PATH:/nouveau/chemin"   # Ajouter au PATH
 ```
 
 ---
 
-## 💻 Commandes Windows exclusives (CMD/PowerShell)
+## 💻 Windows — Exclusif
 
 ```powershell
 # Registre
@@ -293,9 +304,9 @@ reg query HKLM\Software\nom
 reg add HKLM\Software\nom /v Valeur /t REG_SZ /d "data"
 reg delete HKLM\Software\nom /v Valeur
 
-# Réseau Windows
-netsh wlan show profiles               # Profils WiFi
-netsh wlan show profile "nom" key=clear # Mot de passe WiFi
+# Réseau
+netsh wlan show profiles                          # Profils WiFi
+netsh wlan show profile "nom" key=clear           # Mot de passe WiFi
 netsh interface ip set address "Ethernet" static 192.168.1.10 255.255.255.0
 
 # Active Directory (PowerShell)
@@ -308,7 +319,7 @@ Get-CimInstance Win32_BIOS
 Get-CimInstance Win32_LogicalDisk
 Get-CimInstance Win32_NetworkAdapterConfiguration
 
-# Gestion modules PowerShell
+# Modules PowerShell
 Install-Module -Name NomModule
 Get-Module -ListAvailable
 Import-Module NomModule
@@ -320,28 +331,27 @@ Get-BitLockerVolume
 
 ---
 
-## 🍎 Commandes macOS exclusives
+## 🍎 macOS — Exclusif
 
 ```bash
-# Spotlight / mdfind
+# Spotlight
 mdfind "kMDItemDisplayName == '*.pdf'"   # Recherche Spotlight
 mdutil -s /                               # Statut indexation
 
 # Defaults (préférences système)
-defaults read com.apple.finder           # Lire prefs Finder
+defaults read com.apple.finder
 defaults write com.apple.finder AppleShowAllFiles true
-defaults delete com.apple.finder         # Réinitialiser
+defaults delete com.apple.finder
 
 # Gestion apps
-open -a "Nom App"                        # Ouvrir une app
-osascript -e 'tell app "Finder" to quit'  # AppleScript
+open -a "Nom App"
+osascript -e 'tell app "Finder" to quit'
 spctl --status                            # Statut Gatekeeper
 spctl --master-disable                    # Désactiver Gatekeeper
 
-# Réseau macOS
+# Réseau
 networksetup -listallnetworkservices
 networksetup -setdnsservers Wi-Fi 8.8.8.8 8.8.4.4
-airport -s                               # Scanner réseaux WiFi (/System/Library/PrivateFrameworks/...)
 
 # TimeMachine
 tmutil startbackup
@@ -352,6 +362,24 @@ tmutil status
 security find-generic-password -a user -s service -w
 security add-generic-password -a user -s service -w pass
 
-# Homebrew Cask (apps GUI)
+# Homebrew Cask
 brew install --cask nom-app
 brew list --cask
+```
+
+---
+
+## 🤝 Contribuer
+
+Les contributions sont les bienvenues ! N'hésitez pas à ouvrir une issue ou une pull request pour :
+- Ajouter des commandes manquantes
+- Corriger des erreurs
+- Proposer de nouvelles sections
+
+---
+
+<div align="center">
+
+Made with ❤️ by [bsk222](https://github.com/bsk222)
+
+</div>
