@@ -369,15 +369,6 @@ brew list --cask
 
 ---
 
-## 🤝 Contribuer
-
-Les contributions sont les bienvenues ! N'hésitez pas à ouvrir une issue ou une pull request pour :
-- Ajouter des commandes manquantes
-- Corriger des erreurs
-- Proposer de nouvelles sections
-
----
-
 <div align="center">
 
 Made with ❤️ by [bsk222](https://github.com/bsk222)
